@@ -3,12 +3,14 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
 
 //new addons for hosting
 const port = process.env.PORT || 3000;
 
 // connect to mongoDB
-const dbURI = 'mongodb+srv://mav2:mav2@mavcluster.epkejyv.mongodb.net/nodetuts?retryWrites=true&w=majority';
+const dbURI = process.env.DATABASE;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => {
         console.log('Connected to DB')
