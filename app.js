@@ -4,12 +4,15 @@ const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
 const app = express();
 
+//new addons for hosting
+const port = process.env.PORT || 3000;
+
 // connect to mongoDB
 const dbURI = 'mongodb+srv://mav2:mav2@mavcluster.epkejyv.mongodb.net/nodetuts?retryWrites=true&w=majority';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => {
         console.log('Connected to DB')
-        app.listen(3000);
+        app.listen(port);
     })
     .catch((err) => console.log(err));
 
